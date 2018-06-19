@@ -48,8 +48,8 @@ defmodule Payment.Customer do
   def customer_has_card?(customer) do
     sources = Enum.count(customer.sources.data)
     cond do
-     sources > 0 -> true
-     sources <= 0 -> false
+     sources > 0 -> {:has_card, true}
+     sources <= 0 -> {:no_card, false}
     end
   end
 

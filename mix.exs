@@ -26,7 +26,7 @@ defmodule Payment.Mixfile do
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
       { :credo, "~> 0.8", only: [:dev, :test], runtime: false },
       { :poison, "~> 3.1"},
-      { :stripity_stripe, [path: "../stripity_stripe-2.0-alpha"] },
+      { :stripity_stripe, [path: "../stripity_stripe"] },
 
     ]
   end

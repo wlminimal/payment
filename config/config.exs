@@ -30,4 +30,4 @@ use Mix.Config
 #     import_config "#{Mix.env}.exs"
 
 config :stripity_stripe,
-  api_key: "sk_test_BBurYFHYjXDg17HfkEH9wSDW"
+  api_key: "sk_test_XfWXjGCAbBJPNTcxlqNawMWe"

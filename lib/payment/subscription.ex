@@ -7,7 +7,7 @@ defmodule Payment.Subscription do
   # if customer has no payment info redirect to payment page
 
   @doc """
-  changes = %{"customer" => "customer_id", "plan" => "plan_id"}
+  changes = %{customer: "customer_id", plan: "plan_id"}
   """
   @spec create_subscription(map, Keyword.t) :: {:ok, t} | {:error, Stripe.api_error_struct}
   def create_subscription(changes, opts \\ []) do
@@ -37,5 +37,14 @@ defmodule Payment.Subscription do
   def get_subscription_id(customer) do
     %{subscriptions: %{data: [ %{id: id}]}} = customer
     id
+  end
+
+  @doc """
+  cancel subscription immediately with no params
+  if you want to cancel at period end time do this
+  %{"at_period_end" => true}
+  """
+  def cancel_subscription(subscription_id, params \\ %{}) do
+    Subscription.delete(subscription_id, params)
   end
 end
