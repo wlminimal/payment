@@ -2,15 +2,23 @@ defmodule Payment.Invoice do
   alias Stripe.Invoice
 
   @doc """
-  chages = %{customer: customer_id,
+  changes = %{customer: customer_id,
              subscription: subscription_id,
              subscription_items: [%{plan: plan_id}],
              subscription_proration_date: current_date}
   returns
   {:ok, %Stripe.Invocies{}}
   """
-  def upcoming_invoice(changes, opts \\ []) do
+  def upcoming_invoice(customer_id, subscription_id, plan_id, current_date, opts \\ []) do
+    changes = %{customer: customer_id,
+             subscription: subscription_id,
+             subscription_items: [%{plan: plan_id}],
+             subscription_proration_date: current_date}
     Invoice.upcoming(changes, opts)
+  end
+
+  def list_invoices(customer_id) do
+    Invoice.list(%{customer: customer_id})
   end
 
   # def calculate_proration_cost(invoice) do
@@ -23,8 +31,3 @@ defmodule Payment.Invoice do
   #   cost = for(p <- current_prorations, do: p.amount) |> Enum.sum()
   # end
 end
-
-
-# customer_id = cus_CzPZREhqlcassm
-# subscription_id = sub_CzPZBcmqAyaB0D
-# plan_id  = plan_CxqGQzrlZKzsyX

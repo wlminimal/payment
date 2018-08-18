@@ -17,9 +17,9 @@ defmodule Payment.Card do
   def delete_card(card_id, customer_id) do
     case Card.delete(card_id, %{customer: customer_id}) do
       {:ok, _} ->
-        {:ok, "Card is deleted."}
+        {:ok, "Card has benn removed."}
       {:error, _} ->
-        {:error, "Can't delete a card."}
+        {:error, "Can't remove a card."}
     end
   end
 end

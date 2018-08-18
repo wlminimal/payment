@@ -2,7 +2,9 @@ defmodule Payment do
 
   alias Payment.{Charge, Customer, Subscription, Plan, Invoice, Card}
 
+  # Charge
   defdelegate create_charge(changes, opts \\ []), to: Charge
+  defdelegate retrieve_charge(charge_id, opts \\ []), to: Charge
 
   # Customer
   defdelegate create_customer(params, opts \\ []), to: Customer
@@ -26,7 +28,8 @@ defmodule Payment do
   defdelegate get_plan_by_id(plan_id), to: Plan
 
   # Invoice
-  defdelegate upcoming_invoice(changes, opts \\ []), to: Invoice
+  defdelegate upcoming_invoice(customer_id, subscription_id, plan_id, current_date, opts \\ []), to: Invoice
+  defdelegate list_invoices(customer_id), to: Invoice
 
   # Card
   defdelegate retrieve_card(card_id, stripe_id), to: Card
