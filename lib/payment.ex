@@ -28,7 +28,7 @@ defmodule Payment do
   defdelegate get_plan_by_id(plan_id), to: Plan
 
   # Invoice
-  defdelegate upcoming_invoice(customer_id, subscription_id, plan_id, current_date, opts \\ []), to: Invoice
+  defdelegate upcoming_invoice(customer_id), to: Invoice
   defdelegate list_invoices(customer_id), to: Invoice
 
   # Card

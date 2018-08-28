@@ -1,5 +1,5 @@
 defmodule Payment.Invoice do
-  alias Stripe.Invoice
+  alias Stripe.Invoice, as: StripeInvoice
 
   @doc """
   changes = %{customer: customer_id,
@@ -9,16 +9,20 @@ defmodule Payment.Invoice do
   returns
   {:ok, %Stripe.Invocies{}}
   """
-  def upcoming_invoice(customer_id, subscription_id, plan_id, current_date, opts \\ []) do
-    changes = %{customer: customer_id,
-             subscription: subscription_id,
-             subscription_items: [%{plan: plan_id}],
-             subscription_proration_date: current_date}
-    Invoice.upcoming(changes, opts)
+  # def upcoming_invoice(customer_id, subscription_id, plan_id, current_date, opts \\ []) do
+  #   changes = %{customer: customer_id,
+  #            subscription: subscription_id,
+  #            subscription_items: [%{plan: plan_id}],
+  #            subscription_proration_date: current_date}
+  #   Invoice.upcoming(changes, opts)
+  # end
+
+  def upcoming_invoice(customer_id) do
+    StripeInvoice.upcoming(%{customer: customer_id})
   end
 
   def list_invoices(customer_id) do
-    Invoice.list(%{customer: customer_id})
+    StripeInvoice.list(%{customer: customer_id})
   end
 
   # def calculate_proration_cost(invoice) do
