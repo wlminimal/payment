@@ -5,6 +5,11 @@ defmodule Payment.Mixfile do
     [
       app: :payment,
       version: "0.1.0",
+      build_path: "../../_build",
+      config_path: "../../config/config.exs",
+      deps_path: "../../deps",
+      lockfile: "../../mix.lock",
+
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
       deps: deps()
@@ -24,7 +29,7 @@ defmodule Payment.Mixfile do
     [
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
-      { :credo, "~> 0.8", only: [:dev, :test], runtime: false },
+      { :credo, "~> 0.8", only: [:dev, :test], runtime: false, override: true },
       { :poison, "~> 3.1"},
       { :stripity_stripe, "~> 2.0"}
 
